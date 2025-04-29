@@ -2,7 +2,7 @@
 import json
 import os
 
-import urllib
+import urllib.request
 import re  # 正規表現モジュールをインポート
 
 # FastAPI を利用
