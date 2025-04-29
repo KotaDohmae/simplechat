@@ -6,7 +6,7 @@ import urllib.request
 import re  # 正規表現モジュールをインポート
 
 # FastAPI を利用
-FAST_API_BASE_URL = 'https://096b-34-139-156-144.ngrok-free.app'
+FAST_API_BASE_URL = 'https://f428-34-139-156-144.ngrok-free.app'
 
 # Lambda コンテキストからリージョンを抽出する関数
 def extract_region_from_arn(arn):
@@ -26,12 +26,10 @@ def lambda_handler(event, context):
         
         body = json.loads(event['body'])
         message = body['message']
-        conversation_history = body.get('conversationHistory', [])
         
         print("Processing message:", message)
         
-        # 会話履歴を使用
-        messages = conversation_history.copy()
+        messages = []
         
         # ユーザーメッセージを追加
         messages.append({
