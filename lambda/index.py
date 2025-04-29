@@ -54,13 +54,13 @@ def lambda_handler(event, context):
             "content": message
         })
         
-        # invoke_model用のリクエストペイロード
+        # FastAPI用のリクエストペイロード
         request_payload = {
             "prompt": message,
-            "maxTokens": 512,
-            "stopSequences": [],
+            "max_new_tokens": 512,
+            "do_sample": True,
             "temperature": 0.7,
-            "topP": 0.9
+            "top_p": 0.9
         }
 
         url = f"{FAST_API_BASE_URL}/generate"
