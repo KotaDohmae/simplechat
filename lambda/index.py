@@ -6,7 +6,7 @@ import urllib.request
 import re  # 正規表現モジュールをインポート
 
 # FastAPI を利用
-FAST_API_BASE_URL = 'https://f428-34-139-156-144.ngrok-free.app'
+FAST_API_BASE_URL = 'https://ec42-34-142-253-228.ngrok-free.app'
 
 # Lambda コンテキストからリージョンを抽出する関数
 def extract_region_from_arn(arn):
