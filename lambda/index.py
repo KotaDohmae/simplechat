@@ -16,20 +16,6 @@ def extract_region_from_arn(arn):
         return match.group(1)
     return "us-east-1"  # デフォルト値
 
-
-# グローバル変数としてクライアントを初期化（初期値）
-bedrock_client = None
-
-# モデルID
-MODEL_ID = os.environ.get("MODEL_ID", "us.amazon.nova-lite-v1:0")
-
-    
-# グローバル変数としてクライアントを初期化（初期値）
-bedrock_client = None
-
-# モデルID
-MODEL_ID = os.environ.get("MODEL_ID", "us.amazon.nova-lite-v1:0")
-
 def lambda_handler(event, context):
     try:
         # Cognitoで認証されたユーザー情報を取得
@@ -43,7 +29,6 @@ def lambda_handler(event, context):
         conversation_history = body.get('conversationHistory', [])
         
         print("Processing message:", message)
-        print("Using model:", MODEL_ID)
         
         # 会話履歴を使用
         messages = conversation_history.copy()
@@ -68,7 +53,7 @@ def lambda_handler(event, context):
             url,
             data=json.dumps(request_payload).encode('utf-8'),
             headers={'Content-Type': 'application/json'},
-            method='GET'
+            method='POST'
         )
         with urllib.request.urlopen(req) as response:
             response_body = json.loads(response.read().decode('utf-8'))
